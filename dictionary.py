@@ -7,9 +7,13 @@ def meaning(word):
     word = word.lower()
     if word in data:
         return data[word]
+    elif word.title() in data:
+        return data[w.title()]
+    elif word.upper() in data: #in case user enters words like USA or NATO
+        return data[w.upper()]
 
     elif len(gcm(word, data.keys())) > 0:
-        yn =  input("Did you mean %s instead? Enter Y for yes and N for no. " % gcm(word, data.keys())[0])
+        yn =  input("Did you mean %s instead? Enter Y for yes and N for no. " % gcm(word, data.keys())[0]) #compares the closest match and then recommends the word to the user.
         if yn == "Y":
             return data[gcm(word, data.keys())[0]]
         elif yn == "N":
